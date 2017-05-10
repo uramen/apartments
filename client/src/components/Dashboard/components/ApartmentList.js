@@ -8,7 +8,6 @@ class ApartmentList extends Component {
       <div className="apartment-list">
         <Apartment />
         <Apartment />
-        <Apartment />
       </div>
     );
   }
