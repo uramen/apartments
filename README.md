@@ -1,8 +1,6 @@
-# Tenement - в переводе арендуемое помещение.
-
 ## Quick start
 
-1. Clone this repo using ssh `git clone git@github.com:uramen/tenement.git`.
+1. Clone this repo using ssh `git clone git@github.com:uramen/apartments.git`.
 1. Run `npm i` in Client and Server folders to install dependencies.<br />
 1. `npm start` in each folder to start the app.
 
