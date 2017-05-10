@@ -1,0 +1,134 @@
+.apartments {
+  padding: 0px 5%;
+  margin-top: 30px;
+}
+
+.apartments .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -15px;
+}
+
+.apartments .info h2 {
+  color: #525252;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+
+.apartments .info .blue-btn {
+  color: white;
+  background-color: #6987cc;
+  padding: 15px 25px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+.info .blue-btn span {
+  padding-left: 7px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.apartments .apartment-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.apartment-list .apartment {
+  width: 48.33%;
+  background-color: white;
+  margin-top: 35px;
+}
+
+.apartment {
+  padding: 25px;
+}
+
+.apartment .flex-wrapp {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.apartment p {
+  font-family: 'PT Sans', sans-serif;
+  color: #525252;
+}
+
+.apartment .apartment-image {
+  width: 48%;
+}
+
+.apartment-image img {
+  max-width: 100%;
+}
+
+.apartment .apartment-info {
+  width: 48%;
+}
+
+.apartment-info h4 {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  color: #525252;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+}
+
+.apartment-info .rooms-with-price {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}
+
+.rooms-with-price .rooms {
+  background-color: #cc6969;
+  color: white;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 8px;
+}
+
+.rooms-with-price .price {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  background-color: #efd2d2;
+  color: #525252;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 500;
+  width: 100%;
+}
+
+.apartment-info .comfort {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.comfort-blue {
+  background-color: #6987cc;
+}
+
+.comfort-yellow {
+  background-color: #b5864f;
+}
+
+.apartment-info .comfort div {
+  padding: 6px;
+  margin: 5px 7px 5px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.comfort div:nth-child(6n) {
+  margin-right: 0px;
+}
+
+.comfort div span {
+  color: white;
+}
