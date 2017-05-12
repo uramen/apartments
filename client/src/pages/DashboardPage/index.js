@@ -1,6 +1,8 @@
 import React from 'react';
-import ApartmentList from '../components/ApartmentList';
+import ApartmentList from '../../components/ApartmentList';
 import FontAwesome from 'react-fontawesome';
+
+import './assets/component.css';
 
 export default ({loading}) => {
   return (

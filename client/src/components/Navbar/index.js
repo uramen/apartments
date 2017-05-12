@@ -12,12 +12,18 @@ export default (props) => {
   const links = (
     (props.authenticated) ?
       <div>
+        <div className="nav navbar-nav float-xs-left">
+          <Link to="/" className="navbar-brand">Apartments</Link>
+        </div>
         <div className="nav navbar-nav float-xs-right">
           <Link to="#" onClick={logout} className="nav-item nav-link">Вихід</Link>
         </div>
       </div>
     :
       <div>
+        <div className="nav navbar-nav float-xs-left">
+          <Link to="/" className="navbar-brand">Apartments</Link>
+        </div>
         <div className="nav navbar-nav float-xs-right">
           <Link to="/signin" className="nav-item nav-link">Увійти</Link>
           <Link to="/signup" className="nav-item nav-link">Зареєструватись</Link>

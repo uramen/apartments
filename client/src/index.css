@@ -1,8 +1,9 @@
 html, body {
   padding: 0;
   margin: 0;
-  height: 100%;
   background-color: #e9e7e3;
+  min-height:100%;
+  margin-bottom:1px;
 }
 
 * {
@@ -16,3 +17,7 @@ html, body {
 
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&subset=cyrillic,cyrillic-ext');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:300,400,500,600,700');
+
+p, div, span, i {
+  font-family: 'PT Sans', sans-serif;
+}

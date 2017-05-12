@@ -1,0 +1,32 @@
+.apartments {
+  padding: 0px 5%;
+  margin-top: 30px;
+}
+
+.apartments .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -15px;
+}
+
+.apartments .info h2 {
+  color: #525252;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+
+.apartments .info .blue-btn {
+  color: white;
+  background-color: #6987cc;
+  padding: 15px 25px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+.info .blue-btn span {
+  padding-left: 7px;
+  display: inline-block;
+  font-size: 16px;
+}

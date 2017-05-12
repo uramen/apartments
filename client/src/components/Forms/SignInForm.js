@@ -1,15 +1,14 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import './assets/component.css';
+
 const renderField = ({ input, label, type, meta: { touched, error } }) => {
   const hasError = (touched && error) ? 'has-danger' : '';
   return (
     <div className={`form-group ${hasError}`}>
-      <label>{label}</label>
-      <div>
-        <input {...input} placeholder={label} type={type} className="form-control" />
+        <input {...input} placeholder={label} type={type} className="form-username form-control" />
         {touched && error && <div className="form-control-feedback">{error}</div>}
-      </div>
     </div>
   );
 };
@@ -24,11 +23,11 @@ const SignInForm = (props) => {
   const { handleSubmit } = props;
   const errors = props.errors <= 0 ? null : renderErrors(props.errors);
   return (
-    <form onSubmit={handleSubmit}>
+    <form role="form" className="login-form" onSubmit={handleSubmit}>
       {errors}
-      <Field name="email" type="email" component={renderField} label="Email" />
-      <Field name="password" type="password" component={renderField} label="Password" />
-      <button type="submit" className="btn btn-primary">Sign in</button>
+      <Field name="email" type="email" component={renderField} label="Поштова адреса" className="form-username" />
+      <Field name="password" type="password" component={renderField} label="Пароль" className="form-password" />
+      <button type="submit" className="btn btn-primary">Вхід</button>
     </form>
   );
 }
