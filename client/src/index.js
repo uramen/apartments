@@ -10,7 +10,7 @@ import { reducer as formReducer } from 'redux-form';
 import { AUTH_SIGNIN } from './actions';
 import authReducer from './reducers/authReducer';
 import RequireAuth from './containers/RequireAuth';
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
 import NoMatch from './components/NoMatch';
 import HomePageContainer from './containers/HomePageContainer';
 import SignUpPage from './pages/SignUpPage';
@@ -58,7 +58,7 @@ if (token) {
 ReactDOM.render(
   <ApolloProvider store={store} client={client}>
     <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)}>
-      <Route path="/" component={App}>
+      <Route path="/" component={AppContainer}>
         <IndexRoute component={HomePageContainer} />
         <Route path="signup" component={SignUpPage} />
         <Route path="signin" component={SignInPage} />
