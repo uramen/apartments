@@ -11,10 +11,9 @@ const Sidebar = (props) => {
     };
 
   const menu = (
-    <div className="col-md-3">
       <div className="menu">
         <div className="flex-wrapp">
-          <div className="logo">Tenement</div>
+          <div className="logo">Apartment</div>
 
           <div className="burger">
             <FontAwesome name="align-left" />
@@ -23,11 +22,11 @@ const Sidebar = (props) => {
         <nav>
           <IndexLink to="/" activeClassName="active">
             <FontAwesome name="home" />
-            Главная
+            Доступні квартири
           </IndexLink>
           <Link to="/messages" activeClassName="active">
-            <FontAwesome name="envelope" style={{fontSize: '13px'}} />
-            Личные сообщения
+            <FontAwesome name="map-marker" style={{fontSize: '13px'}} />
+            Карта
           </Link>
         </nav>
         <div className="bottom-nav">
@@ -42,16 +41,12 @@ const Sidebar = (props) => {
           </Link>
         </div>
       </div>
-    </div>
   )
 
   return(
     <div className="container-fluid">
       <div className="row">
         {props.authenticated && menu}
-        <div className={props.authenticated ? "col-md-9" : "col-md-12"}>
-          {props.children}
-        </div>
       </div>
     </div>
   )

@@ -1,18 +1,31 @@
 .apartments {
   padding: 0px 5%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .apartments .info {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: -15px;
+  margin-bottom: -20px;
 }
 
 .apartments .info h2 {
   color: #525252;
   font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 500;
+  margin-top: 9px;
+  font-size: 28px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+}
+
+.apartments .info p {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 13px;
+  color: #fff;
+  background-color: #cc6969;
+  padding: 2px 5px;
 }
 
 .apartments .info .blue-btn {

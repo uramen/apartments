@@ -8,9 +8,12 @@ export default ({loading}) => {
   return (
     <div className="apartments">
       <div className="info">
-        <h2>Доступные квартиры</h2>
+        <div>
+          <h2>Доступні квартири</h2>
+          <p>Оновлення бази відбудеться через 34 хв 13 сек</p>
+        </div>
         <a href="" className="blue-btn">
-          Добавить
+          Додати нову
           <FontAwesome name="pencil" />
         </a>
       </div>
