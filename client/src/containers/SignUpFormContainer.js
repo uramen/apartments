@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
 
-import SignUpForm from '../components/SignUpForm';
+import SignUpForm from '../components/Forms/SignUpForm';
 import { signIn } from '../actions';
 
 class SignUpFormContainer extends React.Component {

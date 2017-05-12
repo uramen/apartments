@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import Dashboard from '../components/Dashboard';
+import DashboardPage from '../pages/DashboardPage';
 
 const apartmentsListQuery = gql`
   query {
@@ -13,6 +13,6 @@ const apartmentsListQuery = gql`
 `;
 
 
-const DashboardPageWithData = graphql(apartmentsListQuery)(Dashboard);
+const DashboardPageWithData = graphql(apartmentsListQuery)(DashboardPage);
 
 export default DashboardPageWithData;

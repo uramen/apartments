@@ -1,13 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ApartmentList from '../components/ApartmentList';
 import FontAwesome from 'react-fontawesome';
 
-import ApartmentList from '../ApartmentList';
-
-const Dashboard = ({ data: {loading, error, apartments }}) => {
-  if (error) {
-    return <p>{error.message}</p>;
-  }
-
+export default ({loading}) => {
   return (
     <div className="apartments">
       <div className="info">
@@ -19,8 +14,5 @@ const Dashboard = ({ data: {loading, error, apartments }}) => {
       </div>
       {loading ? <p>Loading ...</p> : <ApartmentList />}
     </div>
-  );
-}
-
-
-export default Dashboard;
+  )
+};

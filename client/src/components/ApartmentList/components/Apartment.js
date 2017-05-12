@@ -5,7 +5,7 @@ import apartmentImg from '../assets/apartment.jpg';
 class Apartment extends Component {
   render() {
     return (
-      <div className="apartment">
+      <div className="col-md-6 apartment">
         <div className="flex-wrapp">
           <div className="apartment-image">
             <img src={apartmentImg} alt=""/>

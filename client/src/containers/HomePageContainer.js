@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Home from '../components/HomePage';
+import Home from '../pages/HomePage';
 
 const mapStateToProps = (state) => ({
   authenticated: state.auth.authenticated

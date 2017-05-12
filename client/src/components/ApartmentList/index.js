@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import './assets/component.css';
 
-import Apartment from './Apartment';
+import Apartment from './components/Apartment';
 
 class ApartmentList extends Component {
   render() {
     return (
-      <div className="apartment-list">
+      <div className="row apartment-list">
+        <Apartment />
+        <Apartment />
+        <Apartment />
         <Apartment />
         <Apartment />
       </div>

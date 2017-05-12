@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
 
-import SignInForm from '../components/SignInForm';
+import SignInForm from '../components/Forms/SignInForm';
 import { signIn } from '../actions';
 
 class SignInFormContainer extends React.Component {

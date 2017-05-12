@@ -13,8 +13,8 @@ import RequireAuth from './containers/RequireAuth';
 import App from './components/App';
 import NoMatch from './components/NoMatch';
 import HomePageContainer from './containers/HomePageContainer';
-import SignUpPage from './components/SignUpPage';
-import SignInPage from './components/SignInPage';
+import SignUpPage from './pages/SignUpPage';
+import SignInPage from './pages/SignInPage';
 import DashboardPageContainer from './containers/DashboardPageContainer';
 
 const token = localStorage.getItem('token');
