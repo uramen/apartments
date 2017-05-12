@@ -1,35 +1,45 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 import grabber from './grabber';
-const winston  = require('winston');
-const schedule = require('node-schedule');
+import winston from 'winston';
+import schedule from 'node-schedule';
 
-const { apolloExpress, graphiqlExpress } = require('apollo-server');
-const { makeExecutableSchema } = require('graphql-tools');
+import {apolloExpress, graphiqlExpress} from 'apollo-server';
+import {makeExecutableSchema} from 'graphql-tools';
 
-const { server, database } = require('./config');
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
+import {server, database} from './config';
+import {getTokenFromRequest} from './utils/auth';
 
-const { getTokenFromRequest } = require('./utils/auth');
+import typeDefs from './typeDefs';
+import resolvers from './resolvers';
 
+
+//# Set up db connection
 mongoose.Promise = global.Promise;
 mongoose.connect(database.uri);
 const db = mongoose.connection;
 
+// If connection with db failing, invokes exception
 db.on('error', () => {
-  const err = new Error('unable to connect to database: ' + config.db);
+  const err = new Error('unable to connect to database: ' + database);
   winston.error(winston.exception.getAllInfo(err));
 });
 
+// If everything is fine
 db.once('open', () => console.log('We are connected to Mongolab DB!'));
 
-const app = express();
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-var corsOptions = { origin: 'http://localhost:3000' };
 
+const app = express();
+
+// Schema for graphql
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+// CORS
+const corsOptions = { origin: 'http://localhost:3000' };
+
+//# Middlewares
 app.use(cors(corsOptions));
 
 app.use('/graphql', bodyParser.json(), apolloExpress(request => ({
@@ -39,6 +49,7 @@ app.use('/graphql', bodyParser.json(), apolloExpress(request => ({
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
+// Start server
 app.listen(server.port, () => console.log(`Now browse to ${server.host}:${server.port}/graphiql`));
 
 // Set up logging
@@ -46,9 +57,9 @@ winston.add(winston.transports.File, {filename: 'logfile.log'});
 winston.remove(winston.transports.Console);
 
 // Running script every one hour
-schedule.scheduleJob('*/60 * * * *', () => {
-  grabber.start();
-});
+// schedule.scheduleJob('*/60 * * * *', () => {
+//   grabber.start();
+// });
 
 
-module.exports = app;
+export default app;

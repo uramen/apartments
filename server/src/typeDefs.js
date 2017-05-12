@@ -48,4 +48,4 @@ const typeDefs = [/* GraphQL */`
   }
 `];
 
-module.exports = typeDefs;
+export default typeDefs;

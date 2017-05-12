@@ -1,7 +1,7 @@
-const connectors = require('./connectors');
+import connectors from './connectors';
 
-const User = require('./models/User');
-const Apartment = require('./models/Apartment');
+import User from './models/User';
+import Apartment from './models/Apartment';
 
 const resolvers = {
   Query: {
@@ -21,6 +21,7 @@ const resolvers = {
           throw new Error(err);
         });
     },
+    
     apartments() {
       return connectors.Apartment.getApartments()
       .then((apartments) => {
@@ -38,6 +39,7 @@ const resolvers = {
       });
     }
   },
+
   Mutation: {
     signUp(root, args) {
       const errors = [];
@@ -59,6 +61,7 @@ const resolvers = {
           throw new Error(err);
         });
     },
+
     signIn(root, args) {
       const errors = [];
 
@@ -83,4 +86,4 @@ const resolvers = {
   }
 };
 
-module.exports = resolvers;
+export default resolvers;

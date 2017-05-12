@@ -1,6 +1,6 @@
-const winston = require('winston');
-const VK      = require('vksdk');
-const Post    = require('../models/Post');
+import winston from 'winston';
+import VK from 'vksdk';
+import Post from '../models/Post';
 
 // Configs
 const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
@@ -10,29 +10,29 @@ const vk        = new VK({
   'language': 'ru'
 });
 
-module.exports = {
-  start: function() {
+export default {
+  start() {
     vk.request('groups.getById', {
       group_ids: groupsIds.join(',')
-    }, function(answer) {
-      var res = answer.response;
+    }, answer => {
+      let res = answer.response;
 
       if (res) {
-        res.forEach(function(group) {
+        res.map(group => {
           vk.request('wall.get', {
             owner_id: -Math.abs(group.id),
             count: 10
-          }, function(answer) {
-            var posts = answer.response.items;
+          }, answer => {
+            let posts = answer.response.items;
 
             if (posts) {
-              posts.forEach(function(post) {
+              posts.map(post => {
                 if (
                   post.post_type === 'post' &&
                   post.attachments !== undefined &&
                   post.text !== ''
                 ) {
-                  var postObj = new Post({
+                  const postObj = new Post({
                     post_id: post.id,
                     group_id: post.owner_id,
                     user_id: post.from_id,
@@ -42,9 +42,9 @@ module.exports = {
                   });
 
                   postObj.save()
-                    .then(function() {
+                    .then(() => {
                       console.log('post successfully saved!');
-                    }, function(err) {
+                    }, err => {
                       // ignore duplicate key error, post_id
                       if (err.code !== 11000) {
                         winston.error(err);

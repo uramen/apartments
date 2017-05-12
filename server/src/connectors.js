@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
-const isEmail = require('validator/lib/isEmail');
+import mongoose from 'mongoose';
+import {isEmail} from 'validator';
 
-const {
+import {
   createToken,
   verifyToken,
   encryptPassword,
   comparePassword
-} = require('./utils/auth');
+} from './utils/auth';
 
-const User = require('./models/User');
-const Apartment = require('./models/Apartment');
+import User from './models/User';
+import Apartment from './models/Apartment';
 
 const connectors = {
   Auth: {
@@ -57,6 +57,7 @@ const connectors = {
         });
       });
     },
+
     signIn(args) {
       return new Promise((resolve, reject) => {
         // Validate the data
@@ -104,6 +105,7 @@ const connectors = {
           .catch(err => reject(err));
       });
     },
+
     isAuthenticated(args) {
       return new Promise((resolve, reject) => {
         if (!args.token) {
@@ -126,11 +128,13 @@ const connectors = {
       });
     }
   },
+
   User: {
     getUsers() {
       return User.find({});
     }
   },
+
   Apartment: {
     getApartments() {
       return Apartment.find({});
@@ -138,4 +142,4 @@ const connectors = {
   }
 };
 
-module.exports = connectors;
+export default connectors;

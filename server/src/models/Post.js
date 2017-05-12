@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const autoIncrement = require('mongodb-autoincrement');
+import mongoose from 'mongoose';
+import autoIncrement from 'mongodb-autoincrement';
 
 const Schema = mongoose.Schema;
 
@@ -16,4 +16,4 @@ const postSchema = new Schema({
 postSchema.plugin(autoIncrement.mongoosePlugin);
 const Post = mongoose.model('Post', postSchema, 'posts');
 
-module.exports = Post;
+export default Post;
