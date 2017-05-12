@@ -21,16 +21,21 @@ const resolvers = {
           throw new Error(err);
         });
     },
-    
+
     apartments() {
       return connectors.Apartment.getApartments()
       .then((apartments) => {
         return apartments.map((apartment) => {
           return {
             id: apartment._id,
+            title: apartment.title,
             description: apartment.description,
             type: apartment.type,
-            rooms: apartment.rooms
+            rooms: apartment.rooms,
+            price: apartment.price,
+            number: apartment.number,
+            vk_profile: apartment.vk_profile,
+            createdAt: apartment.createdAt
           };
         });
       })

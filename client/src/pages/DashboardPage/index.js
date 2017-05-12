@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 
 import './assets/component.css';
 
-export default ({loading}) => {
+export default ({data, loading}) => {
   return (
     <div className="apartments">
       <div className="info">
@@ -17,7 +17,7 @@ export default ({loading}) => {
           <FontAwesome name="pencil" />
         </a>
       </div>
-      {loading ? <p>Loading ...</p> : <ApartmentList />}
+      {loading ? <p>Loading ...</p> : <ApartmentList data={data}/>}
     </div>
   )
 };

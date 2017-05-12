@@ -1,6 +1,6 @@
 import winston from 'winston';
 import VK from 'vksdk';
-import Post from '../models/Post';
+import Apartment from '../models/Apartment';
 
 // Configs
 const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
@@ -32,16 +32,18 @@ export default {
                   post.attachments !== undefined &&
                   post.text !== ''
                 ) {
-                  const postObj = new Post({
-                    post_id: post.id,
-                    group_id: post.owner_id,
-                    user_id: post.from_id,
-                    date: post.date,
-                    text: post.text,
-                    attachments: post.attachments
+                  const apartmentObj = new Apartment({
+                    title: 'Test Title',
+                    type: 'Flat',
+                    rooms: 2,
+                    price: 200,
+                    number: '0953473375',
+                    vk_profile: post.from_id,
+                    description: post.text,
+                    images: post.attachments
                   });
 
-                  postObj.save()
+                  apartmentObj.save()
                     .then(() => {
                       console.log('post successfully saved!');
                     }, err => {

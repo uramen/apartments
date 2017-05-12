@@ -22,9 +22,14 @@ const typeDefs = [/* GraphQL */`
   #Apartment type
   type Apartment {
     id: String!
+    title: String!
     description: String!
     type: String!
     rooms: Int!
+    price: Int!
+    number: String!
+    vk_profile: String
+    createdAt: String
   }
 
   # Query type.

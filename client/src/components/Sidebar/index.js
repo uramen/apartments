@@ -13,7 +13,7 @@ const Sidebar = (props) => {
   const menu = (
       <div className="menu">
         <div className="flex-wrapp">
-          <div className="logo">Apartment</div>
+          <div className="logo">Apartments</div>
 
           <div className="burger">
             <FontAwesome name="align-left" />

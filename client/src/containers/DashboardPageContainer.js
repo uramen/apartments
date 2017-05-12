@@ -7,7 +7,13 @@ const apartmentsListQuery = gql`
   query {
     apartments {
       id
+      type
       description
+      price
+      type
+      vk_profile
+      rooms
+      createdAt
     }
   }
 `;
