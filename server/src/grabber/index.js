@@ -2,6 +2,8 @@ import winston from 'winston';
 import VK from 'vksdk';
 import Apartment from '../models/Apartment';
 
+import rgx from '../helpers/rgx';
+
 // Configs
 const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
 const vk        = new VK({
@@ -32,6 +34,7 @@ export default {
                   post.attachments !== undefined &&
                   post.text !== ''
                 ) {
+        
                   const apartmentObj = new Apartment({
                     title: 'Test Title',
                     type: 'Flat',
@@ -43,15 +46,15 @@ export default {
                     images: post.attachments
                   });
 
-                  apartmentObj.save()
-                    .then(() => {
-                      console.log('post successfully saved!');
-                    }, err => {
-                      // ignore duplicate key error, post_id
-                      if (err.code !== 11000) {
-                        winston.error(err);
-                      }
-                    });
+                  // apartmentObj.save()
+                  //   .then(() => {
+                  //     console.log('post successfully saved!');
+                  //   }, err => {
+                  //     // ignore duplicate key error, post_id
+                  //     if (err.code !== 11000) {
+                  //       winston.error(err);
+                  //     }
+                  //   });
                 }
               });
             } else {
