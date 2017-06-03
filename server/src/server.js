@@ -15,7 +15,6 @@ import {getTokenFromRequest} from './utils/auth';
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
 
-
 //# Set up db connection
 mongoose.Promise = global.Promise;
 mongoose.connect(database.uri);
@@ -37,8 +36,7 @@ const app = express();
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 // CORS
-const corsOptions = { origin: 'https://apartments-uramen.c9users.io' };
-// const corsOptions = { origin: 'http://localhost:3000' };
+const corsOptions = { origin: server.refer };
 
 //# Middlewares
 app.use(cors(corsOptions));

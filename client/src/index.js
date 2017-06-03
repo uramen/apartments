@@ -19,12 +19,11 @@ import DashboardPageContainer from './containers/DashboardPageContainer';
 
 const token = localStorage.getItem('token');
 
-const graphqlURI = process.env.REACT_APP_ENV === 'cloud9' 
-  ? 'https://apartments-uramen.c9users.io:8081/graphql' 
+const graphqlURI = process.env.REACT_APP_ENV === 'cloud9'
+  ? 'https://apartments-uramen.c9users.io:8081/graphql'
   : 'http://localhost:4000/graphql';
 
 const networkInterface = createNetworkInterface({ uri: graphqlURI });
-// const networkInterface = createNetworkInterface({ uri: 'https://apartments-uramen.c9users.io:8081/graphql' });
 
 networkInterface.use([{
   applyMiddleware(req, next) {

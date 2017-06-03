@@ -1,16 +1,19 @@
 let host = 'localhost';
 let port = 4000;
+let refer = 'http://localhost:3000';
 
 //For cloud9
 if(process.env.NODE_ENV === 'cloud9') {
-  host = 'apartments-uramen.c9users.io';
+  host = 'https://apartments-uramen.c9users.io';
   port = 8081;
+  refer = host;
 }
 
 export const
   server = {
-    host: 'apartments-uramen.c9users.io',
-    port: 8081
+    host,
+    port,
+    refer
   },
 
   database = {
