@@ -38,7 +38,6 @@ networkInterface.use([{
   }
 }]);
 
-console.log(process.env.REACT_APP_ENV);
 
 const client = new ApolloClient({
   networkInterface

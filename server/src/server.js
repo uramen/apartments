@@ -58,7 +58,7 @@ winston.add(winston.transports.File, {filename: 'logfile.log'});
 winston.remove(winston.transports.Console);
 
 // Running script every one hour
-// schedule.scheduleJob('*/60 * * * *', () => {
+// schedule.scheduleJob('*/1 * * * *', () => {
 //   grabber.start();
 // });
 

@@ -5,7 +5,7 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "nodemon src/server.js localhost 4000 --exec babel-node -e js",
+    "start": "nodemon src/server.js --exec babel-node -e js",
     "c9": "NODE_ENV=cloud9 nodemon src/server.js --exec babel-node -e js",
     "test": "mocha \"+(test|src)/**/*.test.js\""
   },
