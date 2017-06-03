@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Sidebar from 'react-sidebar';
 import './assets/component.css';
 
 export default (props) => {

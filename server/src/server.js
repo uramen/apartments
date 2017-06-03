@@ -37,7 +37,8 @@ const app = express();
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 // CORS
-const corsOptions = { origin: 'http://localhost:3000' };
+const corsOptions = { origin: 'https://apartments-uramen.c9users.io' };
+// const corsOptions = { origin: 'http://localhost:3000' };
 
 //# Middlewares
 app.use(cors(corsOptions));

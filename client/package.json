@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "c9": "REACT_APP_ENV=cloud9 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
