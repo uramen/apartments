@@ -1,7 +1,16 @@
+let host = 'localhost';
+let port = 4000;
+
+//For cloud9
+if(process.env.NODE_ENV === 'cloud9') {
+  host = 'apartments-uramen.c9users.io';
+  port = 8081;
+}
+
 export const
   server = {
-    host: 'localhost',
-    port: 4000
+    host: 'apartments-uramen.c9users.io',
+    port: 8081
   },
 
   database = {

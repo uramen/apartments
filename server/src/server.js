@@ -37,7 +37,8 @@ const app = express();
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 // CORS
-const corsOptions = { origin: 'http://localhost:3000' };
+const corsOptions = { origin: 'https://apartments-uramen.c9users.io' };
+// const corsOptions = { origin: 'http://localhost:3000' };
 
 //# Middlewares
 app.use(cors(corsOptions));
@@ -57,9 +58,9 @@ winston.add(winston.transports.File, {filename: 'logfile.log'});
 winston.remove(winston.transports.Console);
 
 // Running script every one hour
-schedule.scheduleJob('*/1 * * * *', () => {
-  grabber.start();
-});
+// schedule.scheduleJob('*/1 * * * *', () => {
+//   grabber.start();
+// });
 
 
 export default app;

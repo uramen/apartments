@@ -6,7 +6,9 @@ class Pattern {
   }
 }
 
-const roomsRegexp = /\d[х]/;
+const
+  roomsRegexp = /\d[х]/,
+  priceRegexp =
 
 const rgx = regexp => {
     return new Pattern((str, pos) => {
