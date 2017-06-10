@@ -1,5 +1,3 @@
-import winston from 'winston';
-
 class Pattern {
   constructor(exec){
     this.exec = exec;
@@ -7,16 +5,17 @@ class Pattern {
 }
 
 const
-  roomsRegexp = /\d[х]/;
+  roomsRegexp = /([0-9]-(x|х))/;
 
 const rgx = regexp => {
     return new Pattern((str, pos) => {
         let m = regexp.exec(str.slice(pos));
-        if (m && m.index === 0)
+        console.log(m);
+        if (m)
             return { res: m[0], end: pos + m[0].length };
     });
 }
 
 const text = " Р-н Універсітету. Здається окрема кімната на підселення, з веселою доброю хазяйкою. Євро ремонт, нова пральна маш.автомат, новий холодильник, плазмовий телевізор, нові сучасні меблі, дві шафи купе, підігрів підлоги, гар.вода, санвузол окремий від ванної кімнати та у сучасній плиточці, 2-х контурний котел, інтернет. Ще є місце тільки для 1 дівчини студентки 1-2 курсу, або працюючу дівчину до 20 років, одна щаслива дівчина вже проживає в кімнаті. 1500грн, вже разом з ком.послугами-з одієї людини. Показуємо терміново ☎ 0951785834";
 
-console.log(rgx(/^2$/).exec(text, 0));
+console.log(rgx(roomsRegexp).exec(text, 0).res[0]);
