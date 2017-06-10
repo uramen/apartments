@@ -40,8 +40,8 @@ export default {
                   const apartmentObj = new Apartment({
                     title: 'Test Title',
                     type: 'Flat',
-                    rooms: _.toInteger(rgx(ROOMS).exec(post.text, 0).res[0]),
-                    price: _.toInteger(rgx(PRICE).exec(text, 0).res.match(/^\d+|\d+\b|\d+(?=\w)/g)),
+                    rooms: _.get(rgx(ROOMS).exec(post.text, 0), 'res[0]', 1),
+                    price: rgx(PRICE).exec(post.text, 0).res.replace(/\D/g,''),
                     number: '0953473375',
                     vk_profile: post.from_id,
                     description: post.text,
