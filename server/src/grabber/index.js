@@ -3,7 +3,7 @@ import winston from 'winston';
 import VK from 'vksdk';
 import Apartment from '../models/Apartment';
 
-import rgx from '../helpers/rgx';
+import {rgx} from '../helpers/rgx';
 import {ROOMS} from '../helpers/regexp.js';
 
 // Configs
