@@ -28,6 +28,7 @@ const typeDefs = [/* GraphQL */`
     rooms: Int!
     price: Int!
     number: String!
+    images: [String]!
     vk_profile: String
     createdAt: String
   }

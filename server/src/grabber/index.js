@@ -4,7 +4,7 @@ import VK from 'vksdk';
 import Apartment from '../models/Apartment';
 
 import {rgx} from '../helpers/rgx';
-import {ROOMS, PRICE} from '../helpers/regexp.js';
+import {ROOMS, PRICE, PHONE} from '../helpers/regexp.js';
 
 // Configs
 const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
@@ -42,10 +42,10 @@ export default {
                     type: 'Flat',
                     rooms: _.get(rgx(ROOMS).exec(post.text, 0), 'res[0]', 1),
                     price: rgx(PRICE).exec(post.text, 0).res.replace(/\D/g,''),
-                    number: '0953473375',
+                    number: rgx(PHONE).exec(post.text, 0).res,
                     vk_profile: post.from_id,
                     description: post.text,
-                    images: post.attachments
+                    images: _.map(post.attachments, P => P.photo["photo_604"]),
                   });
 
                   console.log(apartmentObj);
