@@ -74,15 +74,26 @@
 .apartment-info .comfort {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
+
+
 
 .comfort-blue {
   background-color: #6987cc;
+  cursor: pointer;
+
 }
 
 .comfort-yellow {
   background-color: #b5864f;
+  cursor: pointer;
+
+}
+
+.comfort-green {
+  background-color: #77b97e;
+  cursor: pointer;
+
 }
 
 .apartment-info .comfort div {
@@ -92,10 +103,20 @@
   align-items: center;
 }
 
+.apartment-description {
+  line-height: 20px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
 .comfort div:nth-child(6n) {
   margin-right: 0px;
 }
 
 .comfort div span {
   color: white;
+}
+
+.comfort .building {
+  font-size: 40px !important;
 }

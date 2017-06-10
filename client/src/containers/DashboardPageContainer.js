@@ -10,8 +10,10 @@ const apartmentsListQuery = gql`
       type
       description
       price
+      number
       type
       vk_profile
+      images
       rooms
       createdAt
     }
