@@ -4,7 +4,7 @@ import VK from 'vksdk';
 import Apartment from '../models/Apartment';
 
 import {rgx} from '../helpers/rgx';
-import {ROOMS} from '../helpers/regexp.js';
+import {ROOMS, PRICE} from '../helpers/regexp.js';
 
 // Configs
 const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
@@ -41,7 +41,7 @@ export default {
                     title: 'Test Title',
                     type: 'Flat',
                     rooms: _.toInteger(rgx(ROOMS).exec(post.text, 0).res[0]),
-                    price: 200,
+                    price: _.toInteger(rgx(PRICE).exec(text, 0).res.match(/^\d+|\d+\b|\d+(?=\w)/g)),
                     number: '0953473375',
                     vk_profile: post.from_id,
                     description: post.text,
