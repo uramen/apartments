@@ -68,6 +68,7 @@ export default class Apartment extends Component {
                   </div>
               </Tooltip>
             </div>
+            
           </div>
         </div>
           <p className="apartment-description">{_.truncate(this.props.description, {'length': 150, 'separator': ' '})}</p>

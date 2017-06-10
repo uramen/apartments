@@ -12,10 +12,10 @@ export default ({data, loading}) => {
           <h2>Доступні квартири</h2>
           <p>Оновлення бази відбудеться через 34 хв 13 сек</p>
         </div>
-        <a href="" className="blue-btn">
+        {/* <a href="" className="blue-btn">
           Додати нову
           <FontAwesome name="pencil" />
-        </a>
+        </a> */}
       </div>
       {loading ? <p>Loading ...</p> : <ApartmentList data={data}/>}
     </div>
