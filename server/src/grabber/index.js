@@ -1,8 +1,10 @@
+import _ from 'lodash';
 import winston from 'winston';
 import VK from 'vksdk';
 import Apartment from '../models/Apartment';
 
 import rgx from '../helpers/rgx';
+import {ROOMS} from '../helpers/regexp.js';
 
 // Configs
 const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
@@ -34,17 +36,19 @@ export default {
                   post.attachments !== undefined &&
                   post.text !== ''
                 ) {
-        
+
                   const apartmentObj = new Apartment({
                     title: 'Test Title',
                     type: 'Flat',
-                    rooms: 2,
+                    rooms: _.toInteger(rgx(ROOMS).exec(post.text, 0).res[0]),
                     price: 200,
                     number: '0953473375',
                     vk_profile: post.from_id,
                     description: post.text,
                     images: post.attachments
                   });
+
+                  console.log(apartmentObj);
 
                   // apartmentObj.save()
                   //   .then(() => {
