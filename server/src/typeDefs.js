@@ -19,7 +19,7 @@ const typeDefs = [/* GraphQL */`
     email: String!
   }
 
-  #Apartment type
+  # Apartment type
   type Apartment {
     id: String!
     title: String!
@@ -28,7 +28,7 @@ const typeDefs = [/* GraphQL */`
     rooms: Int!
     price: Int!
     number: String!
-    images: [String]!
+    images: [String!]
     vk_profile: String
     createdAt: String
   }

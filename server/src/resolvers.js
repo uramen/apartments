@@ -35,6 +35,7 @@ const resolvers = {
             price: apartment.price,
             number: apartment.number,
             vk_profile: apartment.vk_profile,
+            images: apartment.images,
             createdAt: apartment.createdAt
           };
         });

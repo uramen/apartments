@@ -137,7 +137,7 @@ const connectors = {
 
   Apartment: {
     getApartments() {
-      return Apartment.find({});
+      return Apartment.find({}).sort({createdAt: -1});
     }
   }
 };
