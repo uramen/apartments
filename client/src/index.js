@@ -2,7 +2,7 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import ApolloClient, { createNetworkInterface, createBatchingNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { reducer as formReducer } from 'redux-form';
@@ -15,6 +15,7 @@ import NoMatch from './components/NoMatch';
 import HomePageContainer from './containers/HomePageContainer';
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
+import MapPage from './pages/MapPage';
 import DashboardPageContainer from './containers/DashboardPageContainer';
 
 const token = localStorage.getItem('token');
@@ -39,7 +40,8 @@ networkInterface.use([{
 
 
 const client = new ApolloClient({
-  networkInterface
+  networkInterface,
+  shouldBatch: true,
 });
 
 const store = createStore(
@@ -69,6 +71,7 @@ ReactDOM.render(
         <Route path="signup" component={SignUpPage} />
         <Route path="signin" component={SignInPage} />
         <Route path="dashboard" component={RequireAuth(DashboardPageContainer)} />
+        <Route path="map" component={RequireAuth(MapPage)} />
         <Route path="*" component={NoMatch} />
       </Route>
     </Router>

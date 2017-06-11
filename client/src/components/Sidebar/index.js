@@ -24,7 +24,7 @@ const Sidebar = (props) => {
             <FontAwesome name="home" />
             Доступні квартири
           </IndexLink>
-          <Link to="/messages" activeClassName="active">
+          <Link to="/map" activeClassName="active">
             <FontAwesome name="map-marker" style={{fontSize: '13px'}} />
             Карта
           </Link>
