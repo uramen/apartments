@@ -34,6 +34,7 @@ const resolvers = {
             rooms: apartment.rooms,
             price: apartment.price,
             number: apartment.number,
+            street: apartment.street,
             vk_profile: apartment.vk_profile,
             images: apartment.images,
             createdAt: apartment.createdAt

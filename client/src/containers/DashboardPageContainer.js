@@ -14,6 +14,7 @@ const apartmentsListQuery = gql`
       type
       vk_profile
       images
+      street
       rooms
       createdAt
     }

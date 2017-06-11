@@ -4,7 +4,7 @@ import VK from 'vksdk';
 import Apartment from '../models/Apartment';
 
 import {rgx} from '../helpers/rgx';
-import {ROOMS, PRICE, PHONE} from '../helpers/regexp.js';
+import {ROOMS, PRICE, PHONE, STREET} from '../helpers/regexp.js';
 
 // Configs
 const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
@@ -31,11 +31,18 @@ export default {
 
             if (posts) {
               posts.map(post => {
+                let duplicate = [];
+                
+                // Add all duplicates from db
+                Apartment.find({description: post.text}).then(data => {duplicate = data });
+            
                 if (
                   post.post_type === 'post' &&
                   post.attachments !== undefined &&
-                  post.text !== ''
+                  post.text !== '' &&
+                  duplicate === []
                 ) {
+                  
 
                   const apartmentObj = new Apartment({
                     title: 'Test Title',
@@ -43,22 +50,23 @@ export default {
                     rooms: _.get(rgx(ROOMS).exec(post.text, 0), 'res[0]', 1),
                     price: rgx(PRICE).exec(post.text, 0).res.replace(/\D/g,''),
                     number: rgx(PHONE).exec(post.text, 0).res,
+                    street: _.get(rgx(STREET).exec(post.text, 0), 'res'),
                     vk_profile: post.from_id,
                     description: post.text,
                     images: _.map(post.attachments, P => P.photo["photo_604"]),
                   });
-
+                  
                   console.log(apartmentObj);
 
-                  // apartmentObj.save()
-                  //   .then(() => {
-                  //     console.log('post successfully saved!');
-                  //   }, err => {
-                  //     // ignore duplicate key error, post_id
-                  //     if (err.code !== 11000) {
-                  //       winston.error(err);
-                  //     }
-                  //   });
+                  apartmentObj.save()
+                    .then(() => {
+                      console.log('Post successfully saved!');
+                    }, err => {
+                      // ignore duplicate key error, post_id
+                      if (err.code !== 11000) {
+                        winston.error(err);
+                      }
+                    });
                 }
               });
             } else {

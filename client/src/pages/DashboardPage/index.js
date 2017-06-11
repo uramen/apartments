@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome';
 
 import './assets/component.css';
 
+
 export default ({data, loading}) => {
   return (
     <div className="apartments">

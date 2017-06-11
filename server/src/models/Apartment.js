@@ -9,6 +9,7 @@ const apartmentSchema = new Schema({
   price      : {type: Number, required: true},
   number     : {type: String},
   images     : {type: Array, required: true},
+  street     : {type: String},
   vk_profile : {type: String},
   createdAt  : {type: Date, default: Date.now}
 });
