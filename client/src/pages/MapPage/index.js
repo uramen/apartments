@@ -89,10 +89,11 @@ export default class MapPage extends Component {
                       lat: results[0].geometry.location.lat(),
                       lng: results[0].geometry.location.lng(),
                     },
-                    key: `Taiwan`,
+                    key: A.street,
                     defaultAnimation: 2,
                 })
               }
+              console.log(markers);
               this.setState({markers: markers});
         });
       });
