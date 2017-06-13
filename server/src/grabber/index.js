@@ -7,7 +7,7 @@ import {rgx} from '../helpers/rgx';
 import {ROOMS, PRICE, PHONE, STREET} from '../helpers/regexp.js';
 
 // Configs
-const groupsIds = ['casablanca77', 'pidsluhanochernivtsi'];
+const groupsIds = ['ruby_ch'];
 const vk        = new VK({
   'appId': 6015096,
   'appSecret': 'lpNkoSBzUFjCtBsYZWpV',
@@ -20,7 +20,6 @@ export default {
       group_ids: groupsIds.join(',')
     }, answer => {
       let res = answer.response;
-
       if (res) {
         res.map(group => {
           vk.request('wall.get', {
@@ -31,32 +30,27 @@ export default {
 
             if (posts) {
               posts.map(post => {
-                let duplicate = [];
                 
-                // Add all duplicates from db
-                Apartment.find({description: post.text}).then(data => {duplicate = data });
-            
                 if (
                   post.post_type === 'post' &&
                   post.attachments !== undefined &&
-                  post.text !== '' &&
-                  duplicate === []
+                  post.text !== ''
                 ) {
                   
-
+                   Apartment.find({description: post.text}).then(data => {if(data.length === 0) return;});
+                   
                   const apartmentObj = new Apartment({
                     title: 'Test Title',
                     type: 'Flat',
-                    rooms: _.get(rgx(ROOMS).exec(post.text, 0), 'res[0]', 1),
-                    price: rgx(PRICE).exec(post.text, 0).res.replace(/\D/g,''),
-                    number: rgx(PHONE).exec(post.text, 0).res,
                     street: _.get(rgx(STREET).exec(post.text, 0), 'res'),
+                    rooms: _.get(rgx(ROOMS).exec(post.text, 0), 'res', '0').replace(/\D/g,''),
+                    price: _.get(rgx(PRICE).exec(post.text, 0), 'res', '0').replace(/\D/g,''),
+                    number: _.get(rgx(PHONE).exec(post.text, 0), 'res'),
                     vk_profile: post.from_id,
                     description: post.text,
                     images: _.map(post.attachments, P => P.photo["photo_604"]),
                   });
                   
-                  console.log(apartmentObj);
 
                   apartmentObj.save()
                     .then(() => {
