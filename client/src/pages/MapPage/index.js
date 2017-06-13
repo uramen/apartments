@@ -1,82 +1,119 @@
-import React, {PropTypes} from "react"
-
-import GoogleMap from "react-google-map"
-import GoogleMapLoader from "react-google-maps-loader"
-
-// import iconMarker from "./assets/iconMarker.svg"
-// import iconMarkerHover from "./assets/iconMarkerHover.svg"
+import React, {PropTypes, Component} from "react"
+import _ from 'lodash';
 
 import styles from "./assets/component.css"
 
-const MY_API_KEY = "AIzaSyD0IjMC4W1WZYNsennyUn8yoEHKaDqpFTQ" // fake
+const MY_API_KEY = "AIzaSyD0IjMC4W1WZYNsennyUn8yoEHKaDqpFTQ"
 
-const Map = ({googleMaps}) => (
-  // GoogleMap component has a 100% height style.
-  // You have to set the DOM parent height.
-  // So you can perfectly handle responsive with differents heights.
-  <div className={styles.map}>
-    <GoogleMap
-      googleMaps={googleMaps}
-      // You can add and remove coordinates on the fly.
-      // The map will rerender new markers and remove the old ones.
-      coordinates={[
-        {
-          title: "Toulouse",
-          position: {
-            lat: 43.604363,
-            lng: 1.443363,
-          },
-          onLoaded: (googleMaps, map, marker) => {
-            // Set Marker animation
-            marker.setAnimation(googleMaps.Animation.BOUNCE)
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
-            // Define Marker InfoWindow
-            const infoWindow = new googleMaps.InfoWindow({
-              content: `
-                <div>
-                  <h3>Toulouse<h3>
-                  <div>
-                    Toulouse is the capital city of the southwestern
-                    French department of Haute-Garonne,
-                    as well as of the Occitanie region.
-                  </div>
-                </div>
-              `,
-            })
 
-            // Open InfoWindow when Marker will be clicked
-            // googleMaps.event.addListener(marker, "click", () => {
-            //   infoWindow.open(map, marker)
-            // })
+// Wrap all `react-google-maps` components with `withGoogleMap` HOC
+// and name it GettingStartedGoogleMap
+const Map = withGoogleMap(props => (
+  <GoogleMap
+    ref={props.onMapLoad}
+    defaultZoom={13}
+    defaultCenter={props.currentCoords}
+    onClick={props.onMapClick}
+  >
+    {props.markers.map((marker, index) => (
+      <Marker
+        {...marker}
+        onRightClick={() => props.onMarkerRightClick(index)}
+      />
+    ))}
+  </GoogleMap>
+));
 
-            // Change icon when Marker will be hovered
-            // googleMaps.event.addListener(marker, "mouseover", () => {
-            //   marker.setIcon(iconMarkerHover)
-            // })
+export default class MapPage extends Component {
+  constructor(props){
+    super(props);
 
-            // googleMaps.event.addListener(marker, "mouseout", () => {
-            //   marker.setIcon(iconMarker)
-            // })
+    this.state = {
+      currentCoords: {
+        lat: 48.2895072,
+        lng: 25.9314175,
+      },
 
-            // Open InfoWindow directly
-            // infoWindow.open(map, marker)
-          },
+      markers: [],
+    };
+
+  }
+
+  componentWillMount() {
+
+    if (typeof window === 'undefined') {
+      return
+    }
+    // grab our googleMaps obj from whever she may lay
+    var googleMaps = this.props.googleMaps ||
+      (window.google && // eslint-disable-line no-extra-parens
+        window.google.maps) ||
+      this.googleMaps
+
+    if (!googleMaps) {
+      console.error(// eslint-disable-line no-console
+        'Google map api was not found in the page.')
+      return
+    }
+    // now grab the services we need
+    this.googleMaps = googleMaps
+    this.autocompleteService = new googleMaps.places.AutocompleteService()
+    this.geocoder = new googleMaps.Geocoder()
+
+
+  }
+
+  componentDidMount(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(D => this.setState({
+        currentCoords: {
+          lat: D.coords.latitude,
+          lng: D.coords.longitude,
         }
-      ]}
-      center={{lat: 43.604363, lng: 1.443363}}
-      zoom={8}
-      onLoaded={(googleMaps, map) => {
-        map.setMapTypeId(googleMaps.MapTypeId.SATELLITE)
-      }}
-    />
-  </div>
-)
+      }))
+    }
+  };
 
-Map.propTypes = {
-  googleMaps: PropTypes.object.isRequired,
-}
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.data.loading) {
+      let address = _.filter(nextProps.data.apartments, T => T.street);
+      var markers = [];
 
-export default GoogleMapLoader(Map, {
-  libraries: ["places"],
-  key: MY_API_KEY,
-})
+      _.map(address, A => {
+        this.geocoder.geocode({'address': `Чернівці ${A.street}`}, (results, status) => {
+              if (status === 'OK') {
+                markers.push({
+                    position: {
+                      lat: results[0].geometry.location.lat(),
+                      lng: results[0].geometry.location.lng(),
+                    },
+                    key: `Taiwan`,
+                    defaultAnimation: 2,
+                })
+              }
+              this.setState({markers: markers});
+        });
+      });
+    }
+  }
+
+  render(){
+    return(
+      <Map
+        containerElement={
+          <div style={{ height: `800px`, width: `100%` }} />
+        }
+        mapElement={
+          <div style={{ height: `100%` }} />
+        }
+        currentCoords={this.state.currentCoords}
+        onMapLoad={_.noop}
+        onMapClick={_.noop}
+        markers={this.state.markers}
+        onMarkerRightClick={_.noop}
+      />
+    )
+  }
+};

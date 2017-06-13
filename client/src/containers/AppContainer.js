@@ -3,8 +3,9 @@ import { browserHistory } from 'react-router';
 
 import App from '../components/App';
 
-const mapStateToProps = (state) => ({
-  authenticated: state.auth.authenticated
+const mapStateToProps = (state, props) => ({
+  authenticated: state.auth.authenticated,
+  pathname     : props.location.pathname
 });
 
 export default connect(

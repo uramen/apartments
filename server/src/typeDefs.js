@@ -29,6 +29,7 @@ const typeDefs = [/* GraphQL */`
     price: Int!
     number: String!
     images: [String!]
+    street: String
     vk_profile: String
     createdAt: String
   }

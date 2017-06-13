@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from '../containers/NavbarContainer';
 import Sidebar from '../containers/SidebarContainer';
 
-export default ({authenticated, children }) => (
+export default ({authenticated, children, pathname }) => (
   <div className={authenticated ? 'without-bg' : 'with-bg'}>
     <div className={authenticated ? '' : 'black-bg'}>
       {authenticated ? null :   <Navbar />}
@@ -15,7 +15,7 @@ export default ({authenticated, children }) => (
               <div className="col-md-3">
                 <Sidebar />
               </div>
-              <div className="col-md-9">
+              <div className={`col-md-9 ${pathname === '/map' ? 'delete-padding' : null}`}>
                 {children}
               </div>
             </div>

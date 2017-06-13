@@ -5,6 +5,10 @@ html, body {
   margin-bottom:1px;
 }
 
+.delete-padding {
+  padding: 0px !important;
+}
+
 #root {
   height: 100%;
 }

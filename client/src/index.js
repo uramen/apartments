@@ -15,7 +15,7 @@ import NoMatch from './components/NoMatch';
 import HomePageContainer from './containers/HomePageContainer';
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
-import MapPage from './pages/MapPage';
+import MapContainer from './containers/MapContainer';
 import DashboardPageContainer from './containers/DashboardPageContainer';
 
 const token = localStorage.getItem('token');
@@ -71,7 +71,7 @@ ReactDOM.render(
         <Route path="signup" component={SignUpPage} />
         <Route path="signin" component={SignInPage} />
         <Route path="dashboard" component={RequireAuth(DashboardPageContainer)} />
-        <Route path="map" component={RequireAuth(MapPage)} />
+        <Route path="map" component={RequireAuth(MapContainer)} />
         <Route path="*" component={NoMatch} />
       </Route>
     </Router>
