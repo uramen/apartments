@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome'
 import Tooltip from 'rc-tooltip';
+import { Link } from 'react-router';
 import 'rc-tooltip/assets/bootstrap.css';
 
 import _ from 'lodash';
@@ -68,7 +69,8 @@ export default class Apartment extends Component {
                   </div>
               </Tooltip>
             </div>
-            
+            <div className="phone">{this.props.number}</div>
+            <Link to={`/apartments/${this.props.id}`} className="detail-btn">Детально</Link>
           </div>
         </div>
           <p className="apartment-description">{_.truncate(this.props.description, {'length': 150, 'separator': ' '})}</p>

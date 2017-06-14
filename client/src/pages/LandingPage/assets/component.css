@@ -1,12 +1,32 @@
 .welcome {
-  margin-top: 5%;
-  height: 50%;
+  margin-top: 200px !important;
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcome h2 {
-  color: white;
+  color: #525252;
 }
 
 .welcome p {
+  color: #525252;
+}
+
+.welcome .yellow-btn {
+  display: inline-block;
+  background-color: #de995e;
   color: white;
+  margin-top: 5px;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
 }

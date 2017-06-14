@@ -1,11 +1,12 @@
 import React, {PropTypes, Component} from "react"
 import _ from 'lodash';
+import { Link } from 'react-router';
 
 import styles from "./assets/component.css"
 
 const MY_API_KEY = "AIzaSyD0IjMC4W1WZYNsennyUn8yoEHKaDqpFTQ"
 
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 
 
 // Wrap all `react-google-maps` components with `withGoogleMap` HOC
@@ -21,7 +22,24 @@ const Map = withGoogleMap(props => (
       <Marker
         {...marker}
         onRightClick={() => props.onMarkerRightClick(index)}
-      />
+        onClick={() => props.onMarkerClick(marker)}
+      >
+
+      {marker.showInfo && (
+           <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
+             <div className="marker-apartment">
+               <div className="small-img">
+                   <img src={marker.content.image}/>
+               </div>
+               <div className="price">{`${marker.content.price} грн`}</div>
+               <hr/>
+               <div className="phone">{marker.content.phone}</div>
+               <hr/>
+               <Link to={`/apartments/${marker.content.id}`}>Детально</Link>
+             </div>
+           </InfoWindow>
+         )}
+      </Marker>
     ))}
   </GoogleMap>
 ));
@@ -89,16 +107,51 @@ export default class MapPage extends Component {
                       lat: results[0].geometry.location.lat(),
                       lng: results[0].geometry.location.lng(),
                     },
+                    content: {
+                      id   : A.id,
+                      image: A.images[0],
+                      price: A.price,
+                      phone: A.number
+                    },
+                    showInfo: false,
                     key: A.street,
                     defaultAnimation: 2,
                 })
               }
-              console.log(markers);
               this.setState({markers: markers});
         });
       });
     }
   }
+
+  // Toggle to 'true' to show InfoWindow and re-renders component
+handleMarkerClick(targetMarker) {
+  this.setState({
+    markers: this.state.markers.map(marker => {
+      if (marker === targetMarker) {
+        return {
+          ...marker,
+          showInfo: true,
+        };
+      }
+      return marker;
+    }),
+  });
+}
+
+handleMarkerClose(targetMarker) {
+  this.setState({
+    markers: this.state.markers.map(marker => {
+      if (marker === targetMarker) {
+        return {
+          ...marker,
+          showInfo: false,
+        };
+      }
+      return marker;
+    }),
+  });
+}
 
   render(){
     return(
@@ -114,6 +167,8 @@ export default class MapPage extends Component {
         onMapClick={_.noop}
         markers={this.state.markers}
         onMarkerRightClick={_.noop}
+        onMarkerClick={this.handleMarkerClick.bind(this)}
+        onMarkerClose={this.handleMarkerClose.bind(this)}
       />
     )
   }

@@ -1,0 +1,45 @@
+.apartment-details {
+  padding: 0px 5%;
+  margin-top: 20px;
+}
+
+.apartment-details .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -20px;
+}
+
+.apartment-details .info h2 {
+  color: #525252;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 500;
+  margin-top: 9px;
+  font-size: 28px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+}
+.apartment-details .info a {
+  color: #525252;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.apartment-details .info p {
+  color: #cc6969;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+
+.apartments .details .blue-btn {
+  color: white;
+  background-color: #6987cc;
+  padding: 15px 25px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 2px;
+}

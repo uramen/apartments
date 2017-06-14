@@ -20,7 +20,7 @@ const Sidebar = (props) => {
           </div>
         </div>
         <nav>
-          <IndexLink to="/" activeClassName="active">
+          <IndexLink to="/apartments" activeClassName="active">
             <FontAwesome name="home" />
             Доступні квартири
           </IndexLink>
