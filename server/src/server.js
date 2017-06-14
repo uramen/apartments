@@ -55,7 +55,7 @@ app.listen(server.port, () => console.log(`Now browse to ${server.host}:${server
 winston.add(winston.transports.File, {filename: 'logfile.log'});
 winston.remove(winston.transports.Console);
 
-// Running script every one hour
+// // Running script every one hour
 // schedule.scheduleJob('*/1 * * * *', () => {
 //   grabber.start();
 // });
