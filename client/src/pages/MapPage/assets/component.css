@@ -1,6 +1,49 @@
 .map {
   height: 300px;
+}
+
+.marker-apartment {
+  width: 150px;
+  min-height: 200px;
+}
+
+.marker-apartment hr{
+  margin-bottom: 10px;
+  margin-top: 2px;
+  padding: 0px;
+}
+
+.marker-apartment a {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.marker-apartment .small-img {
+  margin-top: 15px;
+  height: 100px;
+  width: 150px;
+  border-radius: 5px;
+}
+.marker-apartment .small-img img{
+  object-fit: cover;
   width: 100%;
+  height: 100%;
+}
+
+.marker-apartment .price {
+  margin-top: 15px;
+  font-size: 14px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.marker-apartment .phone {
+  font-size: 14px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 @media screen and (min-width: 1024px){

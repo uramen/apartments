@@ -9,7 +9,8 @@ export default ({data}) => {
       <div className="row apartment-list">
         {_.map(data.apartments, (A) =>
           <Apartment
-            key={A._id}
+            key={A.id}
+            id={A.id}
             title={A.title}
             description={A.description}
             rooms={A.rooms}

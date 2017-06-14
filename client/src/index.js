@@ -17,6 +17,7 @@ import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
 import MapContainer from './containers/MapContainer';
 import DashboardPageContainer from './containers/DashboardPageContainer';
+import ApartmentPageContainer from './containers/ApartmentPageContainer';
 
 const token = localStorage.getItem('token');
 
@@ -70,7 +71,8 @@ ReactDOM.render(
         <IndexRoute component={HomePageContainer} />
         <Route path="signup" component={SignUpPage} />
         <Route path="signin" component={SignInPage} />
-        <Route path="dashboard" component={RequireAuth(DashboardPageContainer)} />
+        <Route path="apartments" component={RequireAuth(DashboardPageContainer)} />
+        <Route path="apartments/:id" component={RequireAuth(ApartmentPageContainer)} />
         <Route path="map" component={RequireAuth(MapContainer)} />
         <Route path="*" component={NoMatch} />
       </Route>
