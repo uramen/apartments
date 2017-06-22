@@ -43,3 +43,31 @@
   font-weight: 500;
   border-radius: 2px;
 }
+
+.apartment-details {
+  margin-bottom: 50px;
+}
+
+.apartment-details .images {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.apartment-details .images img {
+  width: 600px;
+}
+
+.apartment-details .description {
+  font-family: 'PT Sans', sans-serif;
+  padding: 25px;
+  background-color: white;
+  color: #525252;
+  width: 600px;
+  margin: 0 auto;
+  line-height: 20px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}

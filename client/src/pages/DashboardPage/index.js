@@ -11,7 +11,7 @@ export default ({data, loading}) => {
       <div className="info">
         <div>
           <h2>Доступні квартири</h2>
-          <p>Оновлення бази відбудеться через 34 хв 13 сек</p>
+          <p>Оновлення бази відбувається через кожних 60хв</p>
         </div>
         <a href="" className="blue-btn">
           Додати нову

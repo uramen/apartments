@@ -20,19 +20,20 @@ componentWillReceiveProps(nextProps) {
   render() {
     return (
        <div className="apartment-details">
-       {this.apartment &&
-      <div className="info">
-        <div>
-          <h2>Детальна сторінка</h2>
-          <p><Link to="/apartments">Головна</Link>/Квартири</p>
-        </div>
-      </div>
-      <div className="detail-white">
-        <div className="images">
-          {this.apartment.images.map(src => (<img src={src}/>))}
-        </div>
-      </div>
-       }
+           <div className="info">
+             <div>
+               <h2>Детальна сторінка</h2>
+               <p><Link to="/apartments">Головна</Link>/Квартири</p>
+             </div>
+           </div>
+           <div className="detail-white">
+             <div className="images">
+               {_.get(this.apartment, '[0].images', []).map(src => <img src={src} alt=""/>)}
+             </div>
+             <div className="description">
+               {_.get(this.apartment, '[0].description', '')}
+             </div>
+           </div>
     </div>
     );
   }
